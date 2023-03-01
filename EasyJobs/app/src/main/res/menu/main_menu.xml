@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/id_tinder_job"
+        android:title="@string/tinder_job"
+        android:icon="@drawable/ic_job"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/id_search_job"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/id_favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_favorite"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/id_chat"
+        android:title="@string/chat"
+        android:icon="@drawable/ic_chat"
+        app:showAsAction="ifRoom"
+
+        />
+    <item
+        android:id="@+id/id_account"
+        android:title="@string/account"
+        android:icon="@drawable/ic_acc"
+        app:showAsAction="ifRoom"
+        />
+</menu>

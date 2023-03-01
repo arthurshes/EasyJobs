@@ -1,13 +1,13 @@
-package com.example.easyjobs.Splash
+package com.example.easyjobs.Splash.activities
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.easyjobs.R
+import com.example.easyjobs.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -16,20 +16,25 @@ import com.google.android.gms.tasks.Task
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private val REQUEST_CODE:Int=2
-    private lateinit var mGoogleTxtButton:TextView
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        mGoogleTxtButton=findViewById(R.id.text_main_googlesignin)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnMainContent.setOnClickListener {
+            startActivity(Intent(this, MainContentActivity::class.java))
+        }
 
      val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
 
-     val   mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+     val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        mGoogleTxtButton.setOnClickListener{
+        binding.textMainGooglesignin.setOnClickListener{
             val signInIntent=mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent,REQUEST_CODE)
         }

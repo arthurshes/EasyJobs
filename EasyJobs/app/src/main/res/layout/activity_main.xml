@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EDEDED"
-    tools:context=".Splash.MainActivity">
+    tools:context=".Splash.activities.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +25,7 @@
         android:id="@+id/text_main_googlesignin"
         android:layout_width="320dp"
         android:layout_height="43dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginTop="500dp"
         android:background="@drawable/button_google_radius"
         android:backgroundTint="@color/white"
         android:gravity="center_vertical"
@@ -50,4 +50,14 @@
         app:layout_constraintStart_toStartOf="@+id/text_main_googlesignin"
         app:layout_constraintTop_toTopOf="@+id/text_main_googlesignin"
         app:srcCompat="@drawable/gaagle" />
+
+    <Button
+        android:id="@+id/btn_main_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="MainContent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_main_googlesignin"
+        app:layout_constraintStart_toStartOf="@+id/text_main_googlesignin"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_googlesignin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

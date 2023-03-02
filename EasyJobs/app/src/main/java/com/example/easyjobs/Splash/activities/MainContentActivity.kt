@@ -21,11 +21,11 @@ class MainContentActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.id_tinder_job -> {
                     showToast("tinder_job")
-                    false
+                    true
                 }
                 R.id.id_search_job -> {
                     showToast("search_job")
-                    false
+                    true
                 }
                 R.id.id_favorite -> {
                     showToast("favorite")

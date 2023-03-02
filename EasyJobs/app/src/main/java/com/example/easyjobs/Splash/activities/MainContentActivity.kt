@@ -42,7 +42,6 @@ class MainContentActivity : AppCompatActivity() {
                 else -> {
                     true
                 }
-
             }
         }
     }

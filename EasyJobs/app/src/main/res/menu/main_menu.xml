@@ -6,6 +6,7 @@
         android:title="@string/tinder_job"
         android:icon="@drawable/ic_job"
         app:showAsAction="ifRoom"
+
         />
     <item
         android:id="@+id/id_search_job"

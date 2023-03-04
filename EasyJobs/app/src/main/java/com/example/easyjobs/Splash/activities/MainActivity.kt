@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         val mAccount=GoogleSignIn.getLastSignedInAccount(this)
 
         if (mAccount!=null){
-            Toast.makeText(applicationContext,"зарегестрирован",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"зарегестрированTEST",Toast.LENGTH_SHORT).show()
         }
     }
 

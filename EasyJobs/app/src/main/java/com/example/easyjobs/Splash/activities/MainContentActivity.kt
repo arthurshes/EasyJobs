@@ -1,8 +1,9 @@
 package com.example.easyjobs.Splash.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.ActivityMainContentBinding
 
@@ -14,6 +15,14 @@ class MainContentActivity : AppCompatActivity() {
         setContentView(binding.root)
         setButtNavView()
         binding.toolbar.title=getString(R.string.tinder_job)
+
+        //Начало. Приложение во весь экран
+        val w = window
+        w.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        //Конец. Приложение во весь экран
     }
 
 

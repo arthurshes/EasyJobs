@@ -5,6 +5,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easyjobs.databinding.ActivityMainBinding
@@ -23,6 +24,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Начало. Приложение во весь экран
+        val w = window
+        w.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        //Конец. Приложение во весь экран
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, MainContentActivity::class.java))

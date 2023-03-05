@@ -25,13 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Начало. Приложение во весь экран
-        val w = window
-        w.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        //Конец. Приложение во весь экран
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, MainContentActivity::class.java))

@@ -1,11 +1,13 @@
 package com.example.easyjobs.Splash.activities
 
 import android.os.Bundle
-import android.view.WindowManager
+
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easyjobs.fragments.FragmentManager
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.ActivityMainContentBinding
+import com.example.easyjobs.fragments.ChatFragment
 
 class MainContentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainContentBinding
@@ -13,20 +15,12 @@ class MainContentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setButtNavView()
+        setButNavView()
         binding.toolbar.title=getString(R.string.tinder_job)
-
-        //Начало. Приложение во весь экран
-        val w = window
-        w.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        //Конец. Приложение во весь экран
     }
 
 
-    private fun setButtNavView() =with(binding){
+    private fun setButNavView() =with(binding){
         binding.bottomPanel.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.id_tinder_job -> {
@@ -45,8 +39,7 @@ class MainContentActivity : AppCompatActivity() {
                     true
                 }
                 R.id.id_chat -> {
-                    showToast("chat")
-                    toolbar.title=getString(R.string.chat)
+                    FragmentManager.setFragment(ChatFragment.newInstance(),this@MainContentActivity)
                     true
                 }
                 R.id.id_account -> {

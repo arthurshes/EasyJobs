@@ -25,27 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, MainContentActivity::class.java))
         }
-
-     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-
-     val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        binding.textMainGooglesignin.setOnClickListener{
-            val signInIntent=mGoogleSignInClient.signInIntent
-            startActivityForResult(signInIntent,REQUEST_CODE)
-        }
-
-        val mAccount=GoogleSignIn.getLastSignedInAccount(this)
-
-        if (mAccount!=null){
-            Toast.makeText(applicationContext,"зарегестрированTEST",Toast.LENGTH_SHORT).show()
-        }
+        signInWithGoogle()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -72,6 +55,25 @@ class MainActivity : AppCompatActivity() {
             Log.w(TAG, "signInResult:failed code=" + e.statusCode)
 //            updateUI(null)
         }
+    }
+
+    private fun signInWithGoogle(){
+        val mAccount=GoogleSignIn.getLastSignedInAccount(this)
+        if (mAccount!=null){
+            Toast.makeText(applicationContext,"зарегестрированTEST",Toast.LENGTH_SHORT).show()
+        }
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        binding.textMainGooglesignin.setOnClickListener{
+            val signInIntent=mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent,REQUEST_CODE)
+        }
+
+
     }
 
 }

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnMainContent.setOnClickListener {
-            startActivity(Intent(this, MainContentActivity::class.java))
+            startActivity(Intent(this, ChooseActivity::class.java))
         }
         signInWithGoogle()
     }

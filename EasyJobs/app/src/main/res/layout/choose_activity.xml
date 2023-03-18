@@ -8,35 +8,10 @@
     tools:context=".Splash.activities.ChooseActivity">
 
     <Button
-        android:id="@+id/btn_worker"
-        android:layout_width="97dp"
-        android:layout_height="37dp"
-        android:background="@drawable/reg"
-        android:text="worker"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
-
-    <Button
-        android:id="@+id/btn_employer"
-        android:layout_width="98dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/reg"
-        android:text="employer"
-        app:layout_constraintEnd_toEndOf="@+id/btn_worker"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_worker"
-        app:layout_constraintTop_toBottomOf="@+id/btn_worker" />
-
-    <Button
         android:id="@+id/button_reg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/reg"
         android:text="зарегистрироваться"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,9 +23,10 @@
         android:id="@+id/textView2"
         android:layout_width="176dp"
         android:layout_height="66dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="Регистрация соискателя"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -59,12 +35,12 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="209dp"
-        android:layout_height="38dp"
+        android:layout_width="240dp"
+        android:layout_height="62dp"
         android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="ФИО"
+        android:hint="ФИО"
         android:textColor="#605B5B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,25 +48,26 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="241dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Возраст"
+        android:hint="Возраст"
         android:textColor="#605B5B"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="243dp"
+        android:layout_height="62dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Город"
+        android:hint="Город"
         android:textColor="#605B5B"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
         app:layout_constraintHorizontal_bias="0.0"

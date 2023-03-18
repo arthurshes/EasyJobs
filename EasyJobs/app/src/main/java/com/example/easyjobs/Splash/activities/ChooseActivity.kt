@@ -11,8 +11,8 @@ class ChooseActivity : AppCompatActivity() {
         binding= ChooseActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnEmployer.setOnClickListener {  chooseEmployer() }
-        binding.btnWorker.setOnClickListener {chooseWorker()  }
+        //binding.btnEmployer.setOnClickListener {  chooseEmployer() }
+        //binding.btnWorker.setOnClickListener {chooseWorker()  }
     }
     private fun chooseWorker(){
 

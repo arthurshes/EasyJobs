@@ -12,7 +12,7 @@ class ChooseActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //binding.btnEmployer.setOnClickListener {  chooseEmployer() }
-        //binding.btnWorker.setOnClickListener {chooseWorker()  }
+        //binding.btnWorker.setOnClickListener {chooseWorker()  }123123
     }
     private fun chooseWorker(){
 

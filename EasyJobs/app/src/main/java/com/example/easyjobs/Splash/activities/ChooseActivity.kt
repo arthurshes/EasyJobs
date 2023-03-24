@@ -33,7 +33,7 @@ class ChooseActivity : AppCompatActivity() {
             }
         }
     }
-
+///
     private fun SignIn(token:String,name:String,age:Int,town:String) {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.signIn(token,name, age, town).let {

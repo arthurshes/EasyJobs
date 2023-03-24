@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 //            updateUI(null)
         }
     }
-
+///
     private fun signInWithGoogle(){
         val mAccount=GoogleSignIn.getLastSignedInAccount(this)
         if (mAccount!=null){

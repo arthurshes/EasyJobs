@@ -10,6 +10,7 @@ import com.example.easyjobs.databinding.ActivityMainContentBinding
 import com.example.easyjobs.fragments.ChatFragment
 
 class MainContentActivity : AppCompatActivity() {
+    ///ddd
     private lateinit var binding: ActivityMainContentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +20,7 @@ class MainContentActivity : AppCompatActivity() {
         binding.toolbar.title=getString(R.string.tinder_job)
     }
 
-
+///
 //    private fun setButNavView() =with(binding){
 //        binding.bottomPanel.setOnItemSelectedListener {
 //            when (it.itemId) {

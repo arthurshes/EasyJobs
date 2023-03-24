@@ -11,12 +11,12 @@ import com.example.easyjobs.databinding.FragmentChatBinding
 
 class ChatFragment : BaseFragment() {
     private lateinit var binding: FragmentChatBinding
-
+///
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+///
     }
-
+///
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,7 +25,7 @@ class ChatFragment : BaseFragment() {
         binding=FragmentChatBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+/////
     companion object {
         @JvmStatic
         fun newInstance() = ChatFragment()

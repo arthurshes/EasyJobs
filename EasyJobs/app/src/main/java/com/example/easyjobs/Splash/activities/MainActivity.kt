@@ -24,6 +24,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        binding.textMainGooglesignin.setOnClickListener{
+            val signInIntent=mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent,REQUEST_CODE)
+        }
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, ChooseActivity::class.java))
@@ -46,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-
+            startActivity(Intent(this, ChooseActivity::class.java))
             // Signed in successfully, show authenticated UI.
 //            updateUI(account)
         } catch (e: ApiException) {
@@ -61,17 +71,9 @@ class MainActivity : AppCompatActivity() {
         val mAccount=GoogleSignIn.getLastSignedInAccount(this)
         if (mAccount!=null){
             Toast.makeText(applicationContext,"зарегестрированTEST",Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ChooseActivity::class.java))
         }
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
 
-        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        binding.textMainGooglesignin.setOnClickListener{
-            val signInIntent=mGoogleSignInClient.signInIntent
-            startActivityForResult(signInIntent,REQUEST_CODE)
-        }
 
 
     }

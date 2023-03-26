@@ -36,9 +36,9 @@ class ChooseActivity : AppCompatActivity() {
     ///izmenen
     ///
     private fun SignIn(token:String,name:String,age:Int,town:String) {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO ).launch {
             viewModel.signIn(token,name, age, town).let {
-                if (it==true){
+                if (it){
                     Toast.makeText(applicationContext,"Успешная регистрация", Toast.LENGTH_SHORT).show()
                 }
             }

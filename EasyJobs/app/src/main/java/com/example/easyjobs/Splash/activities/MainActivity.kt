@@ -6,11 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.ActivityMainBinding
+import com.example.easyjobs.utils.AccountHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
@@ -20,45 +23,59 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val accountHelper = AccountHelper(this)
+
+      val myAuth = FirebaseAuth.getInstance()
+
+    var lunchActGoogle= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+        try {
+            val account = task.getResult(ApiException::class.java)
+            if (account != null) {
+                Log.d("MyLog", "Api 0")
+                accountHelper.signInFirebaseWithGoogle(account.idToken!!)
+                startActivity(Intent(this, ChooseActivity::class.java))
+            }
+        } catch (e: ApiException) {
+            Log.d("MyLog", "Api error ${e.message}")
+        }
+    }
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-           // .requestIdToken(getString(R.string.default_web_client_i))
+      /*  val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_i))
             .requestEmail()
             .build()
 
-        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)*/
 
         binding.textMainGooglesignin.setOnClickListener{
-           val signInIntent=mGoogleSignInClient.signInIntent
+          /* val signInIntent=mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent,REQUEST_CODE)
+            signInWithGoogle()*/
+            accountHelper.signInWithGoogle()
         }
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, ChooseActivity::class.java))
         }
        // signInWithGoogle()
-        signInWithGoogle()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == REQUEST_CODE) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
     }
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-
         try {
             val account = completedTask.getResult(ApiException::class.java)
             startActivity(Intent(this, ChooseActivity::class.java))
@@ -71,6 +88,12 @@ class MainActivity : AppCompatActivity() {
 //            updateUI(null)
         }
     }
+    private fun getSignInClientGoogle(): GoogleSignInClient {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_i)).requestEmail().build()
+        return GoogleSignIn.getClient(this, gso)
+    }
+
 
     private fun signInWithGoogle(){
         val mAccount=GoogleSignIn.getLastSignedInAccount(this)
@@ -78,9 +101,12 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext,"зарегестрированTEST",Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ChooseActivity::class.java))
         }
+        signInClient = getSignInClientGoogle()
+        val intent = signInClient.signInIntent
+        act.lunchActGoogle.launch(intent)
     }
     companion object{
         private const val REQUEST_CODE=2
-    }
+    }*/
 
 }

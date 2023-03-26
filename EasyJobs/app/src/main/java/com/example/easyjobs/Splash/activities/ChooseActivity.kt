@@ -8,6 +8,7 @@ import com.example.easyjobs.databinding.ChooseActivityBinding
 import com.example.easyjobs.viewModels.SignInViewModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,6 +18,10 @@ class ChooseActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var binding: ChooseActivityBinding
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler{ _, throwable ->
+        throwable.printStackTrace()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ChooseActivityBinding.inflate(layoutInflater)
@@ -28,15 +33,15 @@ class ChooseActivity : AppCompatActivity() {
         binding.apply {
             buttonReg.setOnClickListener {
                 if (editTextTextPersonName.text.isNotEmpty()&&editTextTextPersonName2.text.isNotEmpty()&&editTextTextPersonName3.text.isNotEmpty()){
-                    SignIn(token = mAuth.currentUser!!.uid,name = editTextTextPersonName.text.toString(),age=editTextTextPersonName2.text.toString().toInt(), town = editTextTextPersonName3.text.toString())
+                    signIn(token = mAuth.currentUser!!.uid,name = editTextTextPersonName.text.toString(),age=editTextTextPersonName2.text.toString().toInt(), town = editTextTextPersonName3.text.toString())
                 }
             }
         }
     }
     ///izmenen
     ///
-    private fun SignIn(token:String,name:String,age:Int,town:String) {
-        CoroutineScope(Dispatchers.IO ).launch {
+    private fun signIn(token:String, name:String, age:Int, town:String) {
+        CoroutineScope(Dispatchers.IO+ coroutineExceptionHandler ).launch {
             viewModel.signIn(token,name, age, town).let {
                 if (it){
                     Toast.makeText(applicationContext,"Успешная регистрация", Toast.LENGTH_SHORT).show()

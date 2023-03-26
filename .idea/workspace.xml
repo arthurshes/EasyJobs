@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff02ab2a-e754-40a2-937c-2e6b9aec2d59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/EasyJobs/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyJobs/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyJobs/.idea/misc.xml" beforeDir="false" />
-    </list>
+    <list default="true" id="ff02ab2a-e754-40a2-937c-2e6b9aec2d59" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +29,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2MXmhhpCJ02eLC7AWaxljYAJiU1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,7 +41,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/EasyJobs/EasyJobs"
+    "last_opened_file_path": "C:/Users/admin/AndroidStudioProjects/EasyJobs/EasyJobs"
   }
 }]]></component>
   <component name="RecentsManager">

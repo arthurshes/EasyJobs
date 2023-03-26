@@ -28,7 +28,7 @@ class ChooseActivity : AppCompatActivity() {
         binding.apply {
             buttonReg.setOnClickListener {
                 if (editTextTextPersonName.text.isNotEmpty()&&editTextTextPersonName2.text.isNotEmpty()&&editTextTextPersonName3.text.isNotEmpty()){
-                    SignIn(name = editTextTextPersonName.text.toString(), token = mAuth.currentUser!!.uid,age=editTextTextPersonName2.text.toString().toInt(), town = editTextTextPersonName3.text.toString())
+                    SignIn(token = mAuth.currentUser!!.uid,name = editTextTextPersonName.text.toString(),age=editTextTextPersonName2.text.toString().toInt(), town = editTextTextPersonName3.text.toString())
                 }
             }
         }

@@ -42,7 +42,9 @@ android {
 dependencies {
     // Fragment
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
-    implementation 'com.google.firebase:firebase-auth:21.0.3'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
+   // implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     def hilt_version="2.43.2"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"

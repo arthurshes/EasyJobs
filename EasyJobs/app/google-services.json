@@ -43,14 +43,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "798648408431-l3ltieebtvhaej2egdgga7lnuq6iaut8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.tokenretro",
-            "certificate_hash": "ce7c46c2b649f2c77397f0a9948e3c4326360d65"
-          }
-        },
-        {
           "client_id": "798648408431-ugkm4hl58n596raafqmrd1nl8dsm189j.apps.googleusercontent.com",
           "client_type": 3
         }

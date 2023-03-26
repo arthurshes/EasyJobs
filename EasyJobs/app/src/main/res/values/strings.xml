@@ -8,5 +8,6 @@
     <string name="favorite">Избранное</string>
     <string name="chat">Чат</string>
     <string name="account">Аккаунт</string>
+    <string name="default_web_client_i" translatable="false">798648408431-ugkm4hl58n596raafqmrd1nl8dsm189j.apps.googleusercontent.com</string>
     <!--bottomNavView-->
 </resources>

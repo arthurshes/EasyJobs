@@ -1,17 +1,15 @@
 package com.example.easyjobs.Splash.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.easyjobs.databinding.ChooseActivityBinding
 import com.example.easyjobs.viewModels.SignInViewModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class ChooseActivity : AppCompatActivity() {
@@ -19,41 +17,50 @@ class ChooseActivity : AppCompatActivity() {
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var binding: ChooseActivityBinding
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler{ _, throwable ->
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ChooseActivityBinding.inflate(layoutInflater)
+        binding = ChooseActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mAuth= FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
         //binding.btnEmployer.setOnClickListener {  chooseEmployer() }
         //binding.btnWorker.setOnClickListener {chooseWorker()  }
-///
+
         binding.apply {
             buttonReg.setOnClickListener {
-                if (editTextTextPersonName.text.isNotEmpty()&&editTextTextPersonName2.text.isNotEmpty()&&editTextTextPersonName3.text.isNotEmpty()){
-                    signIn(token = mAuth.currentUser!!.uid,name = editTextTextPersonName.text.toString(),age=editTextTextPersonName2.text.toString().toInt(), town = editTextTextPersonName3.text.toString())
-                }
-            }
-        }
-    }
-    ///izmenen
-    ///
-    private fun signIn(token:String, name:String, age:Int, town:String) {
-        CoroutineScope(Dispatchers.IO+ coroutineExceptionHandler ).launch {
-            viewModel.signIn(token,name, age, town).let {
-                if (it){
-                    Toast.makeText(applicationContext,"Успешная регистрация", Toast.LENGTH_SHORT).show()
+                if (edPersonName.text.isNotEmpty() &&
+                    edPersonAge.text.isNotEmpty() &&
+                    edPersonCity.text.isNotEmpty()
+                ) {
+                    signIn(
+                        token = mAuth.currentUser!!.uid,
+                        name = edPersonName.text.toString(),
+                        age = edPersonAge.text.toString().toInt(),
+                        town = edPersonCity.text.toString()
+                    )
                 }
             }
         }
     }
 
-    private fun chooseWorker(){
+    private fun signIn(token: String, name: String, age: Int, town: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.signIn(token, name, age, town).let {
+                if (it) {
+                   Log.d("MyLog","good job")
+                }
+            }
+        }
+    }
+
+    private fun chooseWorker() {
 
     }
-    private fun chooseEmployer(){
+
+    private fun chooseEmployer() {
 
     }
 }

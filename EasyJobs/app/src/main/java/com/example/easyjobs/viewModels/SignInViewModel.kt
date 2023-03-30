@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(private val apiService: ApiService):ViewModel() {
-///
+
    suspend fun signIn(token:String,name:String,age:Int,town:String):Boolean{
        val user = UserSignInModel(
            token = token,

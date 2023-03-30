@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         try {
             val account = task.getResult(ApiException::class.java)
             if (account != null) {
-                Log.d("MyLog", "Api 0")
+              //  Log.d("MyLog", "Api 0")
                 accountHelper.signInFirebaseWithGoogle(account.idToken!!)
                 startActivity(Intent(this, ChooseActivity::class.java))
             }

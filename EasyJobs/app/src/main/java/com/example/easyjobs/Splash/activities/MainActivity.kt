@@ -11,6 +11,7 @@ import com.example.easyjobs.utils.AccountHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+             uiUpdate(myAuth.currentUser)
         /*  val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
               .requestIdToken(getString(R.string.default_web_client_i))
               .requestEmail()
@@ -55,9 +56,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, ChooseActivity::class.java))
-            finish()
+
         }
        // signInWithGoogle()
+    }
+    private fun uiUpdate(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, MainContentActivity::class.java))
+        }/*else{
+            startActivity(Intent(this, MainActivity::class.java))
+        }*/
     }
 
    /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,5 +1,6 @@
 package com.example.easyjobs.Splash.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -50,7 +51,8 @@ class ChooseActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.signIn(token, name, age, town).let {
                 if (it) {
-                   Log.d("MyLog","good job")
+                    startActivity(Intent(this@ChooseActivity, MainContentActivity::class.java))
+                    finish()
                 }
             }
         }

@@ -38,12 +38,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-      /*  val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_i))
-            .requestEmail()
-            .build()
 
-        val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)*/
+        /*  val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+              .requestIdToken(getString(R.string.default_web_client_i))
+              .requestEmail()
+              .build()
+
+          val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)*/
 
         binding.textMainGooglesignin.setOnClickListener{
           /* val signInIntent=mGoogleSignInClient.signInIntent
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMainContent.setOnClickListener {
             startActivity(Intent(this, ChooseActivity::class.java))
+            finish()
         }
        // signInWithGoogle()
     }

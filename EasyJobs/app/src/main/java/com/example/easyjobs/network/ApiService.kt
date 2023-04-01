@@ -1,5 +1,7 @@
 package com.example.easyjobs.network
 
+import com.example.easyjobs.network.model.Content
+import com.example.easyjobs.network.model.GetUser
 import com.example.easyjobs.network.model.SignInStatus
 import com.example.easyjobs.network.model.UserModel
 import retrofit2.http.Body
@@ -13,6 +15,6 @@ interface ApiService {
     suspend fun signInUser(@Body userModel: UserModel):SignInStatus
 
     @Headers("appkey: 1234")
-    @GET("superjob/api/worker/marvel/")
-    suspend fun getUser():UserModel
+    @GET("superjob/api/worker/marvel2/")
+    suspend fun getUser():GetUser
 }

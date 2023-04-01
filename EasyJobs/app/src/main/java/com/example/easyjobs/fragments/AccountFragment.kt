@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.easyjobs.MainApp
+import com.example.easyjobs.Splash.activities.MainContentActivity
 import com.example.easyjobs.databinding.FragmentAccountBinding
 import com.example.easyjobs.viewModels.SignInViewModel
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -19,17 +21,23 @@ import kotlinx.coroutines.launch
 class AccountFragment : BaseFragment() {
     private var binding: FragmentAccountBinding? = null
     private val viewModel: SignInViewModel by activityViewModels ()
+    private lateinit var mAuth: FirebaseAuth
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-            binding?.tvName?.text = viewModel.getUser().content.name
-            binding?.tvAge?.text = viewModel.getUser().content.age
-            binding?.tvTown?.text = viewModel.getUser().content.town
-            Log.d("MyLog", viewModel.getUser().content.name)
+            binding?.tvName?.text = viewModel.getUser(mAuth.uid).content.name
+            binding?.tvAge?.text = viewModel.getUser(mAuth.uid).content.age
+            binding?.tvTown?.text = viewModel.getUser(mAuth.uid).content.town
+
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mAuth = FirebaseAuth.getInstance()
     }
 
 

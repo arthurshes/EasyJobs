@@ -1,9 +1,7 @@
 package com.example.easyjobs.viewModels
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.easyjobs.network.ApiService
-import com.example.easyjobs.network.model.Content
 import com.example.easyjobs.network.model.GetUser
 import com.example.easyjobs.network.model.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +19,8 @@ class SignInViewModel @Inject constructor(private val apiService: ApiService) : 
         )
         return apiService.signInUser(user).status
     }
-    suspend fun getUser(): GetUser {
-        return apiService.getUser()
+    suspend fun getUser(id:String?): GetUser {
+        return apiService.getUser(id!!)
     }
+
 }

@@ -14,19 +14,20 @@ class ChatFragment : BaseFragment() {
 ///
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-///
+
     }
 ///
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding=FragmentChatBinding.inflate(inflater, container, false)
         return binding.root
     }
-/////
-    companion object {
+
+
+   companion object {
         @JvmStatic
         fun newInstance() = ChatFragment()
     }

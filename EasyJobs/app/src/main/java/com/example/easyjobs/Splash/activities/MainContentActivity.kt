@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.easyjobs.fragments.FragmentManager
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.ActivityMainContentBinding
+import com.example.easyjobs.fragments.AccountFragment
 import com.example.easyjobs.fragments.ChatFragment
 import com.example.easyjobs.utils.ToastHelper
 import com.example.easyjobs.utils.ToastHelper.showToast
@@ -47,6 +48,7 @@ class MainContentActivity : AppCompatActivity() {
                 }
                 R.id.id_account -> {
                     showToast("account",this@MainContentActivity)
+                    FragmentManager.setFragment(AccountFragment.newInstance(),this@MainContentActivity)
                     toolbar.title=getString(R.string.account)
                    true
                 }

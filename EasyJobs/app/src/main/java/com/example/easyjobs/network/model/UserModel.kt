@@ -1,6 +1,6 @@
 package com.example.easyjobs.network.model
 
-data class UserSignInModel(
+data class UserModel(
     val token:String,
     val name:String,
     ///

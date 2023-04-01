@@ -12,7 +12,7 @@ import com.example.easyjobs.fragments.ChatFragment
 import com.example.easyjobs.utils.ToastHelper
 import com.example.easyjobs.utils.ToastHelper.showToast
 import dagger.hilt.android.AndroidEntryPoint
-
+@AndroidEntryPoint
 class MainContentActivity : AppCompatActivity() {
     ///ddd
     private lateinit var binding: ActivityMainContentBinding

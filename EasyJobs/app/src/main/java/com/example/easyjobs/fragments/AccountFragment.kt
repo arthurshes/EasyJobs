@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.easyjobs.MainApp
 import com.example.easyjobs.databinding.FragmentAccountBinding
 import com.example.easyjobs.viewModels.SignInViewModel
@@ -21,11 +22,14 @@ class AccountFragment : BaseFragment() {
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding?.btn?.setOnClickListener {}
-        user()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launch {
+            binding?.tvName?.text = viewModel.getUser().content.name
+            binding?.tvAge?.text = viewModel.getUser().content.age
+            binding?.tvTown?.text = viewModel.getUser().content.town
+            Log.d("MyLog", viewModel.getUser().content.name)
+        }
     }
 
 
@@ -36,15 +40,6 @@ class AccountFragment : BaseFragment() {
         // Inflate the layout for this fragment
         binding = FragmentAccountBinding.inflate(inflater, container, false)
         return binding?.root
-    }
-
-    private fun user() {
-        CoroutineScope(Dispatchers.IO/* + coroutineExceptionHandler*/).launch {
-            binding?.tvName?.text = viewModel.getUser().content.name
-            binding?.tvAge?.text = viewModel.getUser().content.age
-            binding?.tvTown?.text = viewModel.getUser().content.town
-            Log.d("MyLog", viewModel.getUser().message)
-        }
     }
 
     companion object {

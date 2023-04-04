@@ -3,6 +3,7 @@ package com.example.easyjobs.Splash.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,59 @@ class ChooseActivity : AppCompatActivity() {
                     )
                 }
             }
+            buttonWorker.setOnClickListener {
+                edPersonName.visibility= View.GONE
+                edPersonAge.visibility= View.GONE
+                edPersonCity.visibility= View.GONE
+                edPersonName2.visibility= View.VISIBLE
+                edPersonAge2.visibility= View.VISIBLE
+                edPersonCity2.visibility= View.VISIBLE
+                buttonWorker.visibility= View.GONE
+                buttonEmployer.visibility= View.VISIBLE
+                textView2.visibility= View.GONE
+                textView3.visibility= View.VISIBLE
+                buttonReg.visibility= View.GONE
+                buttonReg2.visibility= View.VISIBLE
+
+
+                if (edPersonName.text.isNotEmpty() &&
+                    edPersonAge.text.isNotEmpty() &&
+                    edPersonCity.text.isNotEmpty()
+
+                ) {
+                    signIn(
+                        token = mAuth.currentUser!!.uid,
+                        name = edPersonName2.text.toString(),
+                        age = edPersonAge2.text.toString().toInt(),
+                        town = edPersonCity2.text.toString()
+                    )
+                }
+            }
+            buttonEmployer.setOnClickListener {
+                edPersonName2.visibility= View.GONE
+                edPersonAge2.visibility= View.GONE
+                edPersonCity2.visibility= View.GONE
+                edPersonName.visibility= View.VISIBLE
+                edPersonAge.visibility= View.VISIBLE
+                edPersonCity.visibility= View.VISIBLE
+                buttonEmployer.visibility= View.GONE
+                buttonWorker.visibility= View.VISIBLE
+                textView2.visibility= View.VISIBLE
+                textView3.visibility= View.GONE
+                buttonReg.visibility= View.VISIBLE
+                buttonReg2.visibility= View.GONE
+                if (edPersonName2.text.isNotEmpty() &&
+                    edPersonAge2.text.isNotEmpty() &&
+                    edPersonCity2.text.isNotEmpty()
+                ) {
+                    signIn(
+                        token = mAuth.currentUser!!.uid,
+                        name = edPersonName2.text.toString(),
+                        age = edPersonAge2.text.toString().toInt(),
+                        town = edPersonCity2.text.toString()
+                    )
+                }
+            }
         }
     }
 
@@ -65,4 +119,6 @@ class ChooseActivity : AppCompatActivity() {
     private fun chooseEmployer() {
 
     }
+
+
 }

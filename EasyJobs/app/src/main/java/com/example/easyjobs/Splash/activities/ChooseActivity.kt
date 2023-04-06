@@ -41,8 +41,7 @@ class ChooseActivity : AppCompatActivity() {
                         token = mAuth.currentUser!!.uid,
                         name = edPersonName.text.toString(),
                         age = edPersonAge.text.toString().toInt(),
-                        town = edPersonCity.text.toString()
-                    )
+                        town = edPersonCity.text.toString())
                 }
             }
             buttonWorker.setOnClickListener {

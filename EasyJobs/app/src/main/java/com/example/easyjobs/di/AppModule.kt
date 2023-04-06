@@ -23,6 +23,7 @@ object AppModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(provide())
+            // .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
             .create(ApiService::class.java)
     @Provides

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/adsFragment">
+
+    <fragment
+        android:id="@+id/adsFragment"
+        android:name="com.example.easyjobs.fragments.AdsFragment"
+        android:label="fragment_ads"
+        tools:layout="@layout/fragment_ads" >
+        <action
+            android:id="@+id/action_adsFragment_to_createAdsFragment"
+            app:destination="@id/createAdsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAdsFragment"
+        android:name="com.example.easyjobs.fragments.CreateAdsFragment"
+        android:label="fragment_create_ads"
+        tools:layout="@layout/fragment_create_ads" >
+        <action
+            android:id="@+id/action_createAdsFragment_to_adsFragment"
+            app:destination="@id/adsFragment" />
+    </fragment>
+</navigation>

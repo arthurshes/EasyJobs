@@ -1,14 +1,11 @@
 package com.example.easyjobs.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.easyjobs.MainApp
-import com.example.easyjobs.Splash.activities.MainContentActivity
 import com.example.easyjobs.databinding.FragmentAccountBinding
 import com.example.easyjobs.viewModels.SignInViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +26,7 @@ class AccountFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             binding?.tvName?.text = viewModel.getUser(mAuth.uid).content.name
-            binding?.tvAge?.text = viewModel.getUser(mAuth.uid).content.age
+            binding?.tvAge?.text = viewModel.getUser(mAuth.uid).content.age.toString()
             binding?.tvTown?.text = viewModel.getUser(mAuth.uid).content.town
 
         }

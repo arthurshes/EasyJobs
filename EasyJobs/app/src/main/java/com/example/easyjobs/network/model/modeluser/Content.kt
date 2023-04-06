@@ -1,6 +1,6 @@
-package com.example.easyjobs.network.model
+package com.example.easyjobs.network.model.modeluser
 
-data class UserModel(
+data class Content(
     val token:String,
     val name:String,
     val age:Int,

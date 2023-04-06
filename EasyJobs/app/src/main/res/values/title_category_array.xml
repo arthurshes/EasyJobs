@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_name">
+        <item>@string/title_category_programmer</item>
+        <item>@string/title_category_sysadmin</item>
+        <item>@string/title_category_engineer</item>
+        <item>@string/title_category_designer</item>
+    </string-array>
+</resources>

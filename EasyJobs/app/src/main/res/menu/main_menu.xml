@@ -9,9 +9,9 @@
 
         />
     <item
-        android:id="@+id/id_search_job"
-        android:title="@string/search"
-        android:icon="@drawable/ic_search"
+        android:id="@+id/id_all_job"
+        android:title="@string/all"
+        android:icon="@drawable/ic_ads"
         app:showAsAction="ifRoom"
         />
     <item

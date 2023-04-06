@@ -1,4 +1,4 @@
-package com.example.easyjobs.network.model
+package com.example.easyjobs.network.model.modeluser
 
 data class GetUser(
     val content: Content,

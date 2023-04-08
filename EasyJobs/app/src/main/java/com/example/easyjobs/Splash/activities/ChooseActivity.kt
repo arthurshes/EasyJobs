@@ -102,7 +102,7 @@ class ChooseActivity : AppCompatActivity() {
 
     private fun signIn(token: String, name: String, age: Int, town: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.signIn(token, name, age, town).let {
+            viewModel.signInRepo(token, name, age, town).let {
                 if (it) {
                     startActivity(Intent(this@ChooseActivity, MainContentActivity::class.java))
                     finish()

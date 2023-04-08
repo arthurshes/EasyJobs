@@ -18,5 +18,5 @@ interface ApiService {
 
     @Headers("appkey: 1234")
     @GET("superjob/api/vacancy")
-     fun getAds(): Flow<List<AdWorkerModel>>
+    suspend fun getAds(): List<AdWorkerModel>
 }

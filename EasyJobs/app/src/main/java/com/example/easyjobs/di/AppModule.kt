@@ -1,5 +1,8 @@
 package com.example.easyjobs.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.easyjobs.db.MainDb
 import com.example.easyjobs.network.ApiService
 import com.example.easyjobs.utils.Constants.BASE_URL
 import dagger.Module
@@ -34,4 +37,11 @@ object AppModule {
 
       return OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideMainDb(app:Application):MainDb =
+        Room.databaseBuilder(app,MainDb::class.java,"db.test")
+            .fallbackToDestructiveMigration()
+            .build()
 }

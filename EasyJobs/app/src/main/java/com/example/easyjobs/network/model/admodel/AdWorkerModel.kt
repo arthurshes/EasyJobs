@@ -1,6 +1,7 @@
 package com.example.easyjobs.network.model.admodel
 
 data class AdWorkerModel(
+    val id:Int,
     val age_from: Int,
     val age_to: Int,
     val candidat: String,

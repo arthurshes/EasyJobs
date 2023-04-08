@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.easyjobs.R
 import com.example.easyjobs.Splash.activities.MainContentActivity
@@ -38,6 +39,7 @@ class AdsFragment : Fragment() {
       //  binding?.rcView?.layoutManager = LinearLayoutManager(activity)
        // binding?.rcView?.adapter = adapter
         observe()
+        initRc()
 
     }
 
@@ -45,5 +47,11 @@ class AdsFragment : Fragment() {
         viewModel.allNotes.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+    }
+
+    private fun initRc()=with(binding){
+        this?.rcView?.layoutManager = LinearLayoutManager(activity)
+        adapter = AdsAdapter()
+        this?.rcView?.adapter = adapter
     }
 }

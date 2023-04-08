@@ -1,6 +1,6 @@
 package com.example.easyjobs.network
 
-import androidx.room.Query
+import androidx.lifecycle.MutableLiveData
 import com.example.easyjobs.network.model.admodel.AdWorkerModel
 import com.example.easyjobs.network.model.modeluser.Content
 import com.example.easyjobs.network.model.modeluser.GetUser
@@ -17,6 +17,6 @@ interface ApiService {
     suspend fun getUser(@Path("id") id: String?): GetUser
 
     @Headers("appkey: 1234")
-    @GET("superjob/api/vacancy")
-    suspend fun getAds(): List<AdWorkerModel>
+    @GET("superjob/api/vacancy/")
+    suspend fun getAds():List<AdWorkerModel>
 }

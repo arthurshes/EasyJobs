@@ -1,10 +1,10 @@
 package com.example.easyjobs.viewModels
 
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.*
-import androidx.room.Query
+import com.example.easyjobs.adapters.AdsAdapter
 import com.example.easyjobs.network.ApiService
 import com.example.easyjobs.network.model.admodel.AdWorkerModel
-import com.example.easyjobs.network.model.modeluser.Content
 import com.example.easyjobs.network.model.modeluser.GetUser
 import com.example.easyjobs.repo.MainRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,14 +14,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignInViewModel @Inject constructor(private val repo: MainRepo) : ViewModel() {
+class SignInViewModel @Inject constructor(/*private val apiService: ApiService*/private val repo: MainRepo) : ViewModel() {
 //    val allNotes: LiveData<List<AdWorkerModel>> = apiService.getAds().asLiveData()
- var allNotes:MutableLiveData<List<AdWorkerModel>> = MutableLiveData()
 
+        // var allNotes: LiveData<List<AdWorkerModel>> =repo.getAllAds().asLiveData()
+ var allNotes:MutableLiveData<List<AdWorkerModel>> = MutableLiveData()          ///////КОМЕНТЫ НЕ УДАЛЯТЬ
 
-    suspend fun getNotesApi(){
+       /*  suspend fun getAdsApi(adapter: AdsAdapter) =viewModelScope.launch{
+             viewModelScope.launch (Dispatchers.IO){
+                 val response = repo.getAllAds()
+                 allNotes.postValue(response)
+             }
+
+                 allNotes.observe()
+           }*/
+    suspend fun getAdsApi(){
         viewModelScope.launch (Dispatchers.IO){
-            val response = repo.getAllNotes()
+            val response = repo.getAllAds()
             allNotes.postValue(response)
         }
     }
@@ -31,7 +40,7 @@ class SignInViewModel @Inject constructor(private val repo: MainRepo) : ViewMode
 
 //    suspend fun getUser(id:String?): GetUser {
 //        return apiService.getUser(id!!)
-//    }
+//   }
 
     suspend fun getUser(id:String?):GetUser = repo.getUser(id)
 }

@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MainRepo @Inject constructor(private val apiService: ApiService,private  val mainDb: MainDb) {
     private val dao = mainDb.getDao()
 
-    suspend fun getAllNotes() = apiService.getAds()
+    suspend fun getAllAds() = apiService.getAds()
 
  suspend fun  getUser(id:String?) = apiService.getUser(id)
 

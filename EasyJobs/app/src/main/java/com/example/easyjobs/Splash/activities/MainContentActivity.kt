@@ -45,6 +45,7 @@ class MainContentActivity : AppCompatActivity() {
                 R.id.id_all_job -> {
                     toolbar.title=getString(R.string.all)
                     fragmentContainer.visibility=View.VISIBLE
+                  //  FragmentManager.setFragment(AdsFragment.newInstance(),this@MainContentActivity)
                     true
                 }
                 R.id.id_favorite -> {

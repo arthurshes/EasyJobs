@@ -3,18 +3,14 @@ package com.example.easyjobs.adapters
 
 
 import androidx.recyclerview.widget.RecyclerView
-import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import coil.load
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.AdItemBinding
 import com.example.easyjobs.network.model.admodel.AdWorkerModel
-import com.example.easyjobs.network.model.modeluser.AdEmployer
 
 class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemComparator()) {
 
@@ -29,7 +25,7 @@ class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemCompara
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = AdItemBinding.bind(view)
         fun setData(adWorkerModel: AdWorkerModel) = with(binding) {
-
+            tvNameCompany.text=adWorkerModel.firm_name
         }
 
         companion object {
@@ -44,7 +40,7 @@ class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemCompara
 
     class ItemComparator : DiffUtil.ItemCallback<AdWorkerModel>() {
         override fun areItemsTheSame(oldItem: AdWorkerModel, newItem: AdWorkerModel): Boolean {
-            return oldItem.candidat == newItem.candidat
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: AdWorkerModel, newItem: AdWorkerModel): Boolean {

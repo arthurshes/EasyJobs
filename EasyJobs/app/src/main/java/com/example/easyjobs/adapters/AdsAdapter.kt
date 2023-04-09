@@ -2,6 +2,7 @@ package com.example.easyjobs.adapters
 
 
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -24,16 +25,41 @@ class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemCompara
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = AdItemBinding.bind(view)
+        private val adapter=ChatAdapter()
         fun setData(adWorkerModel: AdWorkerModel) = with(binding) {
             tvNameCompany.text=adWorkerModel.firm_name
+
+            btnMassage.setOnClickListener {
+                adapter.updateAdapter(fillAd(adWorkerModel))
+                Log.d("MyLog","${adapter.adArray.size}")
+            }
+        }
+        private fun fillAd(ad:AdWorkerModel):ArrayList<AdWorkerModel>{
+            return arrayListOf(AdWorkerModel(
+                age_from = ad.age_from,
+                age_to = ad.age_to,
+                candidat = ad.candidat,
+                catalogues = ad.catalogues,
+                client_logo = ad.client_logo,
+                education = ad.education,
+                experience = ad.experience,
+                firm_activity = ad.firm_activity,
+                firm_name = ad.firm_name,
+                id=ad.id,
+                payment_from = ad.payment_from,
+                payment_to = ad.payment_to,
+                phone = ad.phone,
+                place_of_work = ad.place_of_work,
+                profession = ad.profession,
+                town = ad.town,
+                type_of_work = ad.type_of_work,
+                work=ad.work
+            ))
         }
 
         companion object {
             fun create(parent: ViewGroup): ItemHolder {
-                return ItemHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.ad_item, parent, false)
-                )
+                return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.ad_item, parent, false))
             }
         }
     }

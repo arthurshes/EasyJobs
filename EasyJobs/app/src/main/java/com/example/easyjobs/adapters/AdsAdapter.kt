@@ -2,16 +2,22 @@ package com.example.easyjobs.adapters
 
 
 
+import android.content.Context
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.easyjobs.R
 import com.example.easyjobs.databinding.AdItemBinding
+import com.example.easyjobs.fragments.ChatFragment
+import com.example.easyjobs.fragments.FragmentManager
 import com.example.easyjobs.network.model.admodel.AdWorkerModel
+
+
 
 class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemComparator()) {
 
@@ -23,13 +29,14 @@ class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemCompara
         holder.setData(getItem(position))
     }
 
-    class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ItemHolder(view: View,val context: Context) : RecyclerView.ViewHolder(view) {
         private val binding = AdItemBinding.bind(view)
         private val adapter=ChatAdapter()
         fun setData(adWorkerModel: AdWorkerModel) = with(binding) {
             tvNameCompany.text=adWorkerModel.firm_name
 
             btnMassage.setOnClickListener {
+                //FragmentManager.setFragment(ChatFragment.newInstance(), context as AppCompatActivity )
                 adapter.updateAdapter(fillAd(adWorkerModel))
                 Log.d("MyLog","${adapter.adArray.size}")
             }
@@ -59,7 +66,7 @@ class AdsAdapter : ListAdapter<AdWorkerModel, AdsAdapter.ItemHolder>(ItemCompara
 
         companion object {
             fun create(parent: ViewGroup): ItemHolder {
-                return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.ad_item, parent, false))
+                return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.ad_item, parent, false), parent.context)
             }
         }
     }

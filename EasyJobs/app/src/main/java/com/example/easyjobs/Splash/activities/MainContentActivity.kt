@@ -55,8 +55,8 @@ class MainContentActivity : AppCompatActivity() {
                     true
                 }
                 R.id.id_chat -> {
-                    FragmentManager.setFragment(ChatFragment.newInstance(),this@MainContentActivity)
                     fragmentContainer.visibility=View.GONE
+                    FragmentManager.setFragment(ChatFragment.newInstance(),this@MainContentActivity)
                     true
                 }
                 R.id.id_account -> {

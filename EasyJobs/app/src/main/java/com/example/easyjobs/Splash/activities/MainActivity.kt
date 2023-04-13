@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding?=null
     private val accountHelper = AccountHelper(this)
 
       val myAuth = FirebaseAuth.getInstance()
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
              uiUpdate(myAuth.currentUser)
         /*  val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
               .requestIdToken(getString(R.string.default_web_client_i))
@@ -47,16 +47,20 @@ class MainActivity : AppCompatActivity() {
 
           val  mGoogleSignInClient = GoogleSignIn.getClient(this, gso)*/
 
-        binding.textMainGooglesignin.setOnClickListener{
+        binding?.textMainGooglesignin?.setOnClickListener{
           /* val signInIntent=mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent,REQUEST_CODE)
             signInWithGoogle()*/
             accountHelper.signInWithGoogle()
         }
 
-        binding.btnMainContent.setOnClickListener {
+        binding?.btnMainContent?.setOnClickListener {
             startActivity(Intent(this, ChooseActivity::class.java))
 
+        }
+
+        binding?.button?.setOnClickListener {
+            startActivity(Intent(this, MainContentActivity::class.java))
         }
        // signInWithGoogle()
     }

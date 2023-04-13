@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding?.btnMainContent?.setOnClickListener {
-            startActivity(Intent(this, ChooseActivity::class.java))
+            startActivity(Intent(this, MainContentActivity::class.java))
 
         }
 

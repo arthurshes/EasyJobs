@@ -3,6 +3,7 @@ import  androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.easyjobs.network.model.admodel.AdWorkerModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -12,4 +13,11 @@ interface Dao {
 
     @Query("SELECT * FROM testEnti")
     fun getAllTest(): Flow<List<TestEntity>>
+
+    @Insert
+    suspend fun insertChatItem(chatItem: ChatItemEntity)
+
+    @Query("SELECT * FROM ChatTable")
+    fun getAllChatItems(): Flow<List<AdWorkerModel>>
+
 }

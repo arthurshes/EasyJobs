@@ -1,6 +1,7 @@
 package com.example.easyjobs.network
 
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Query
 import com.example.easyjobs.network.model.admodel.AdWorkerModel
 import com.example.easyjobs.network.model.modeluser.Content
 import com.example.easyjobs.network.model.modeluser.GetUser

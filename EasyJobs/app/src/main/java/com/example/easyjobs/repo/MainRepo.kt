@@ -1,5 +1,6 @@
 package com.example.easyjobs.repo
 
+import com.example.easyjobs.db.ChatItemEntity
 import com.example.easyjobs.db.MainDb
 import com.example.easyjobs.network.ApiService
 import com.example.easyjobs.network.model.modeluser.Content
@@ -7,9 +8,11 @@ import javax.inject.Inject
 
 
 class MainRepo @Inject constructor(private val apiService: ApiService,private  val mainDb: MainDb) {
-    private val dao = mainDb.getDao()
+     val dao = mainDb.getDao()
 
     suspend fun getAllAds() = apiService.getAds()
+     //fun getAllChatItem() =dao.getAllChatItems()
+    suspend fun insertChatItem(chatItem: ChatItemEntity) =dao.insertChatItem(chatItem)
 
  suspend fun  getUser(id:String?) = apiService.getUser(id)
 

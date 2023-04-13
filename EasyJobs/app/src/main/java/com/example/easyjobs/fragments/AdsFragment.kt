@@ -1,12 +1,9 @@
 package com.example.easyjobs.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -14,17 +11,20 @@ import com.example.easyjobs.R
 import com.example.easyjobs.Splash.activities.MainContentActivity
 import com.example.easyjobs.adapters.AdsAdapter
 import com.example.easyjobs.databinding.FragmentAdsBinding
+import com.example.easyjobs.db.ChatItemEntity
+import com.example.easyjobs.network.model.admodel.AdWorkerModel
 import com.example.easyjobs.viewModels.SignInViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AdsFragment : BaseFragment() {
+class AdsFragment : BaseFragment(),AdsAdapter.AdsListener {
     private var binding: FragmentAdsBinding? = null
     private lateinit var adapter:AdsAdapter
     private val viewModel: SignInViewModel by activityViewModels ()
     private var job: Job?=null
+    private var adWorkerModel=AdWorkerModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,10 +49,24 @@ class AdsFragment : BaseFragment() {
 
     }
 
+    override fun insert() {
+      insertChatItem()
+    }
+
+    private fun insertChatItem(){
+        val item=ChatItemEntity(
+            null,
+            adWorkerModel.firm_name,
+            "",
+            0
+        )
+        viewModel.insertChatItem(item)
+    }
+
     private fun observe(){
         job = CoroutineScope(Dispatchers.Main).launch {
             viewModel.getAdsApi()
-            viewModel.allNotes.observe(viewLifecycleOwner) {
+            viewModel.allAds.observe(viewLifecycleOwner) {
                // Log.d("MyLog", it.toString())
                 adapter.submitList(it)
             }
@@ -61,7 +75,7 @@ class AdsFragment : BaseFragment() {
 
     private fun initRc()=with(binding){
         this?.rcView?.layoutManager = LinearLayoutManager(activity)
-        adapter = AdsAdapter()
+        adapter = AdsAdapter(this@AdsFragment)
         this?.rcView?.adapter = adapter
     }
 
@@ -71,8 +85,8 @@ class AdsFragment : BaseFragment() {
         job?.cancel()
     }
 
-   /* companion object {
+    companion object {
         @JvmStatic
         fun newInstance() = AdsFragment()
-    }*/
+    }
 }

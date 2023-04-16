@@ -1,6 +1,12 @@
 package com.example.easyjobs.network.model.admodel
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity("AdWorkModelCache")
 data class AdWorkerModel(
+    @PrimaryKey(autoGenerate = false)
+    val id: Int?=null,
     val age_from: Int?=null,
     val age_to: Int?=null,
     val candidat: String?=null,
@@ -10,7 +16,6 @@ data class AdWorkerModel(
     val experience: Experience?=null,
     val firm_activity: String?=null,
     val firm_name: String?=null,
-    val id: Int?=null,
     val payment_from: Int?=null,
     val payment_to: Int?=null,
     val phone: Any?=null,

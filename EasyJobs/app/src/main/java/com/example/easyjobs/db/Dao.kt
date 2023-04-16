@@ -15,9 +15,9 @@ interface Dao {
     fun getAllTest(): Flow<List<TestEntity>>
 
     @Insert
-    suspend fun insertChatItem(chatItem: ChatItemEntity)
+    suspend fun insertChatItem(adWorkerModel: AdWorkerModel)
 
-    @Query("SELECT * FROM ChatTable")
+    @Query("SELECT * FROM AdWorkModelCache")
     fun getAllChatItems(): Flow<List<AdWorkerModel>>
 
 }
